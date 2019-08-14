@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # The original version of this script is licensed under the MIT license.
 # See https://github.com/Masterminds/glide/blob/master/LICENSE for more details
