@@ -1,5 +1,6 @@
 # arduino-cli
 
+
 ![Workflow Status](https://github.com/Arduino/arduino-cli/workflows/test/badge.svg)
 [![codecov](https://codecov.io/gh/arduino/arduino-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/arduino/arduino-cli)
 
