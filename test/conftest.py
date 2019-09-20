@@ -67,6 +67,13 @@ def run_command(data_dir, downloads_dir, working_dir):
         cli_full_line = "{} {}".format(cli_path, cmd_string)
         run_context = Context()
         with run_context.cd(working_dir):
-            return run_context.run(cli_full_line, echo=False, hide=True, env=env)
+            return run_context.run(
+                cli_full_line,
+                echo=False,
+                hide=True,
+                warn=True,
+                env=env,
+                in_stream=False,
+            )
 
     return _run
