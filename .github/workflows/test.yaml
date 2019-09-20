@@ -45,6 +45,7 @@ jobs:
         run: task build
 
       - name: Run unit tests
+        if: matrix.operating-system != 'windows-2019'
         run: task test-unit
 
       - name: Run unit tests on the legacy package
@@ -62,7 +63,6 @@ jobs:
         # with python integration tests on windows
         # this step is disabled for windows-2019
         # platform ATM
-        if: matrix.operating-system != 'windows-2019'
         run: |
           pip install -r test/requirements.txt
           task test-integration
