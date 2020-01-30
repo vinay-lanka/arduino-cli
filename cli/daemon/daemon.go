@@ -17,6 +17,7 @@ package daemon
 
 import (
 	"fmt"
+	"github.com/arduino/arduino-cli/telemetry"
 	"github.com/segmentio/stats/v4"
 	"io"
 	"io/ioutil"
@@ -30,7 +31,6 @@ import (
 	srv_commands "github.com/arduino/arduino-cli/rpc/commands"
 	srv_monitor "github.com/arduino/arduino-cli/rpc/monitor"
 	srv_settings "github.com/arduino/arduino-cli/rpc/settings"
-	"github.com/arduino/arduino-cli/telemetry"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -59,6 +59,7 @@ func runDaemonCommand(cmd *cobra.Command, args []string) {
 
 	if viper.GetBool("telemetry.enabled") {
 		telemetry.Activate("daemon")
+		stats.Incr("daemon", stats.T("success", "true"))
 		defer stats.Flush()
 	}
 
