@@ -495,11 +495,37 @@ Arduino Hardware specification. You can find more information in this
 `arduino/Arduino wiki
 page <https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware-specification>`__
 
-Using the gRPC interface
-------------------------
+Using the ``daemon`` mode and the gRPC interface
+------------------------------------------------
+
+Arduino CLI can be launched as a gRPC server via the ``daemon`` command
 
 The `client_example <./client_example>`__ folder contains a sample
 program that shows how to use gRPC interface of the CLI.
+
+To provide observability for the gRPC server activities besides logs,
+the ``daemon`` mode activatesand exposes by default a `Prometheus <https://prometheus.io/>`__
+endpoint (at http://localhost:9090/metrics ) that can be fetched for
+telemetry data like:
+
+.. code:: text
+
+# TYPE daemon_compile counter
+daemon_compile{buildProperties="",exportFile="",fqbn="arduino:samd:mkr1000",installationID="ed6f1f22-1fbe-4b1f-84be-84d035b6369c",jobs="0",libraries="",preprocess="false",quiet="false",showProperties="false",sketchPath="5ff767c6fa5a91230f5cb4e267c889aa61489ab2c4f70f35f921f934c1462cb6",success="true",verbose="true",vidPid="",warnings=""} 1 1580385724726
+
+# TYPE daemon_board_list counter
+daemon_board_list{installationID="ed6f1f22-1fbe-4b1f-84be-84d035b6369c",success="true"} 1 1580385724833
+
+The telemetry settings are exposed via the ``telemetry`` section
+in the CLI configuration:
+
+.. code:: yaml
+
+   telemetry:
+      enabled: true
+      addr: :9090
+      pattern: /metrics
+
 
 .. |Tests passing| image:: https://github.com/Arduino/arduino-cli/workflows/test/badge.svg
    :target: https://github.com/Arduino/arduino-cli/actions?workflow=test
