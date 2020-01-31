@@ -498,13 +498,13 @@ page <https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware
 Using the ``daemon`` mode and the gRPC interface
 ------------------------------------------------
 
-Arduino CLI can be launched as a gRPC server via the ``daemon`` command
+Arduino CLI can be launched as a gRPC server via the ``daemon`` command.
 
 The `client_example <./client_example>`__ folder contains a sample
 program that shows how to use gRPC interface of the CLI.
 
 To provide observability for the gRPC server activities besides logs,
-the ``daemon`` mode activatesand exposes by default a `Prometheus <https://prometheus.io/>`__
+the ``daemon`` mode activates and exposes by default a `Prometheus <https://prometheus.io/>`__
 endpoint (at http://localhost:9090/metrics ) that can be fetched for
 telemetry data like:
 
