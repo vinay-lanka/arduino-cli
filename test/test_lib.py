@@ -152,6 +152,17 @@ def test_install(run_command):
     assert "Error resolving dependencies for MD_Parola@3.2.0: dependency 'MD_MAX72xx' is not available" in result.stderr
 
 
+def test_install_flags(run_command):
+    # Test git url library install
+    assert run_command("lib install Wifi101 --git-url https://github.com/arduino-libraries/WiFi101.git")
+
+    # Test failing-install as repository already exists
+    result = run_command("lib install Wifi101 --git-url https://github.com/arduino-libraries/WiFi101.git")
+    assert (
+        "Error installing Git Library repository already exists"
+        in result.stderr
+    )
+
 def test_update_index(run_command):
     result = run_command("lib update-index")
     assert result.ok
