@@ -163,6 +163,7 @@ def test_install_flags(run_command):
         in result.stderr
     )
 
+
 def test_update_index(run_command):
     result = run_command("lib update-index")
     assert result.ok
